@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   end
   
   def test
-      render html: "vector"
+    render html: "vector"
   end
 end
