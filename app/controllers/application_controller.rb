@@ -7,4 +7,6 @@ class ApplicationController < ActionController::Base
   def test
     render html: 'vector'
   end
+
+  include SessionsHelper
 end
