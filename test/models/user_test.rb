@@ -63,4 +63,41 @@ class UserTest < ActiveSupport::TestCase
     @user.password = @user.password_confirmation = 'a' * 5
     assert_not @user.valid?
   end
+  
+  test 'associated microposts should be destroyed' do
+    @user.save
+    @user.microposts.create!(content: 'aiueo')
+    assert_difference 'Micropost.count', -1 do
+      @user.destroy
+    end
+  end
+
+  test 'should follow and unfollow a user' do
+    michael = users(:michael)
+    archer = users(:archer)
+    assert_not michael.following?(archer)
+    michael.follow(archer)
+    assert michael.following?(archer)
+    assert archer.followers.include?(michael)
+    michael.unfollow(archer)
+    assert_not michael.following?(archer)
+  end
+
+  test 'feed should have the right posts' do
+    archer = users(:archer)
+    lana = users(:lana)
+    michael = users(:michael)
+    
+    lana.microposts.each do |following_post|
+      assert michael.feed.include?(following_post)
+    end
+
+    michael.microposts.each do |post_self|
+      assert michael.feed.include?(post_self)
+    end
+
+    archer.microposts.each do |unfollow_post|
+      assert_not michael.feed.include?(unfollow_post)
+    end
+  end
 end
