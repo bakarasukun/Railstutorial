@@ -6,6 +6,15 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def api
+    if current_user 
+      @feed_items = current_user.feed.paginate(page: params[:page]).includes(:user)
+    else
+      @feed_items = nil
+    end
+    render formats: 'json', handlers: 'jbuilder'
+  end
+
   def help
   end
 
@@ -15,4 +24,6 @@ class StaticPagesController < ApplicationController
   def contact
   end
   
+  def test
+  end
 end

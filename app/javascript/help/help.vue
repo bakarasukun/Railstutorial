@@ -1,5 +1,5 @@
 <template>
-  <div id='help'>
+  <div>
     <h1>Help</h1>
     <p>
       Get help on the Ruby on Rails Tutorial at the

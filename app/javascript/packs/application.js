@@ -16,11 +16,18 @@
 // const imagePath = (name) => images(name, true)
 
 import Vue from "vue/dist/vue.esm.js";
-import help from '../help/help.vue'
+import help from '../help/help.vue';
+import test from '../micropost/micropost.vue';
+import ElementUI from 'element-ui';
+import locale from 'element-ui/lib/locale/lang/en';
+import 'element-ui/lib/theme-chalk/index.css';
+
+Vue.use(ElementUI, { locale });
 
 new Vue({
   el: '#vue-container',
   components: {
-    help
+    help,
+    test
   }
 })

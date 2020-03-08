@@ -2,8 +2,12 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   
   get '/help', to: 'static_pages#help'
+  get '/api', to: 'static_pages#api'
   get '/about', to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
+
+  get '/test', to: 'static_pages#test'
+  
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
