@@ -28,11 +28,9 @@ export default {
     }
   },
   async beforeCreate() {
-    let query = location.search;
-    let page = query.replace("?page=", "");
-    let response = null;
+    let page = location.search.replace("?page=", "");
     if (page === '') page = 1;
-    response = await axios
+    const response = await axios
       .get('http://localhost:3000/api', {
         params: {
           page: page

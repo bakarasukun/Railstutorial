@@ -57,8 +57,7 @@ export default {
   },
   methods: {
     async changeFeed(val) {
-      let response = null;
-      response = await axios
+      const response = await axios
         .get('http://localhost:3000/api', {
           params: {
             page: val

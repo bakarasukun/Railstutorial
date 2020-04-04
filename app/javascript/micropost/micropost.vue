@@ -41,10 +41,14 @@ export default {
   },
   methods: {
     async del_confirm(id){
-      let response = null;
       if (confirm("You sure?")){
-        response = await axios
+        try {
+        const response = await axios
           .delete("http://localhost:3000/microposts/"+id);
+        alert('deleted');
+        } catch(error) { 
+          alert('error has occurred');
+        }
         this.$emit('chagneFeed');
       }
     }

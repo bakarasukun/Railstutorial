@@ -25,8 +25,7 @@ export default {
     pluralize(count){
       if (count === 1){
         return count + ' micropost'
-      }
-      else {
+      } else {
         return count + ' microposts'
       }
     }
