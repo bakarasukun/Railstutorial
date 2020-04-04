@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     pluralize(count){
-      if (count==1){
+      if (count === 1){
         return count + ' micropost'
       }
       else {

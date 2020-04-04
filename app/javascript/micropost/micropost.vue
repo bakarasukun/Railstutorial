@@ -29,18 +29,6 @@ axios.defaults.headers.common = {
 };
 export default {
   name: 'micropost',
-  methods: {
-    async del_confirm(id){
-      var response = null;
-      if (confirm("You sure?")){
-        try {
-          response = await axios
-            .delete("http://localhost:3000/microposts/"+id)
-        } catch(err){};
-        this.$emit('chagneFeed');
-      }
-    }
-  },
   props: {
     item: {
       type: Object,
@@ -49,6 +37,16 @@ export default {
     current_user: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    async del_confirm(id){
+      let response = null;
+      if (confirm("You sure?")){
+        response = await axios
+          .delete("http://localhost:3000/microposts/"+id);
+        this.$emit('chagneFeed');
+      }
     }
   }
 }

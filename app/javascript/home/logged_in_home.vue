@@ -57,16 +57,13 @@ export default {
   },
   methods: {
     async changeFeed(val) {
-      var response = null;
-      try {
+      let response = null;
       response = await axios
         .get('http://localhost:3000/api', {
           params: {
             page: val
           }
-        })
-      } catch(err) {};
-      console.log(val);
+        });
       this.items = response.data.items;
     }
   }

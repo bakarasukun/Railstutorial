@@ -27,22 +27,17 @@ export default {
       page_count: 1
     }
   },
-  async beforeCreate(){
-    var query = location.search;
-    var page = query.replace("?page=", "");
-    var response =null;
-    console.log(query);
-    console.log(page);
-    if (page=='')page=1;
-    console.log(page);
-    try {
-      response = await axios
-        .get('http://localhost:3000/api', {
-          params: {
-            page: page
-          }
-        })
-    } catch(err) {}
+  async beforeCreate() {
+    let query = location.search;
+    let page = query.replace("?page=", "");
+    let response = null;
+    if (page === '') page = 1;
+    response = await axios
+      .get('http://localhost:3000/api', {
+        params: {
+          page: page
+        }
+      });
     this.current_user = response.data.current_user;
     this.microposts = response.data.items;
     this.page_count = response.data.page_count;

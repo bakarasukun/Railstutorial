@@ -41,7 +41,6 @@ export default {
   },
   methods: {
     ChildChangeFeed(val){
-      console.log(val);
       this.$emit('changeFeed',val);
     }
   }
