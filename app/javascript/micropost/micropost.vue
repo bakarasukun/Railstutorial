@@ -1,7 +1,9 @@
 <template>
   <div :id='`micropost_${item.id}`'>
     <li>
-      <img :src='`${item.avatar}`'>
+      <a :href='`http://localhost:3000/users/${item.user_id}`'>
+        <img :src='`${item.avatar}`' class='gravatar'>
+      </a>
       <span class='user'>
         <a :href='`http://localhost:3000/users/${item.user_id}`'>
           {{item.name}}
