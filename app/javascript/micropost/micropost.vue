@@ -28,12 +28,14 @@ axios.defaults.headers.common = {
 export default {
   name: 'micropost',
   methods: {
-    del_confirm(id){
+    async del_confirm(id){
+      var response = null;
       if (confirm("You sure?")){
-
-        axios
-          .delete("http://localhost:3000/microposts/"+id)
-          .then()
+        try {
+          response = await axios
+            .delete("http://localhost:3000/microposts/"+id)
+        } catch(err){};
+        this.$emit('chagneFeed');
       }
     }
   },

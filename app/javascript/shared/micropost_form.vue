@@ -39,6 +39,8 @@ export default {
         data.append('micropost[picture]', this.file);
         const res = await axios.post(url, data, { headers });
       } catch(err){console.log(err)};
+      this.$emit('changeFeed',1);
+      this.textarea = ''
     },    
     selectfile(){
       this.file = event.target.files[0];

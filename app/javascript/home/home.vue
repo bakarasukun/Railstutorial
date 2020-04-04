@@ -29,8 +29,9 @@ export default {
   },
   async beforeCreate(){
     var query = location.search;
-    var page = query.replace("?page=");
+    var page = query.replace("?page=", "");
     var response =null;
+    console.log(query);
     console.log(page);
     if (page=='')page=1;
     console.log(page);
