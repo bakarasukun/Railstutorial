@@ -5,6 +5,7 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
+      render :json => 'success'
       #flash[:success] = 'micropost saved'
       #redirect_to root_url
     else
@@ -14,9 +15,14 @@ class MicropostsController < ApplicationController
   end
 
   def destroy
-    @micropost.destroy
+    if @micropost.destroy
+      pp "test"
+      render 'microposts/success', formats: 'json', handlers: 'jbuilder'
+    else
+      render :json => 'failed'
+    end
     #flash[:success] = 'Micropsot deleted'
-    #redirect_to request.referrer || root_url
+    #redirect_to request.referrer || root_url 
   end
 
   private

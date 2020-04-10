@@ -27,7 +27,7 @@ export default {
       page_count: 1
     }
   },
-  async beforeCreate() {
+  async mounted() {
     let page = location.search.replace("?page=", "");
     if (page === '') page = 1;
     const response = await axios

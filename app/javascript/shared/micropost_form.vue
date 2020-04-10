@@ -38,6 +38,7 @@ export default {
 
       this.$emit('changeFeed', 1);
       this.textarea = ''
+      this.file = null
     },  
     selectfile() {
       this.file = event.target.files[0];

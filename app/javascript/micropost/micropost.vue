@@ -15,7 +15,7 @@
       </span>
       <span class='timestamp'>
         Posted {{item.date}} ago.
-        <a href="" v-on:click="del_confirm(item.id)" v-if='item.user_id == current_user.id'>delete</a>
+        <a href="javascript:void(0)" v-on:click="del_confirm(item.id);return false;" v-if='item.user_id == current_user.id'>delete</a>
       </span>
     </li>
   </div>
@@ -39,17 +39,18 @@ export default {
       required: true
     }
   },
+
   methods: {
     async del_confirm(id){
       if (confirm("You sure?")){
         try {
         const response = await axios
           .delete("http://localhost:3000/microposts/"+id);
-        alert('deleted');
-        } catch(error) { 
+        alert(response.data.msg);
+        } catch(error) {
           alert('error has occurred');
         }
-        this.$emit('chagneFeed');
+        this.$emit('chagneFeed',1);
       }
     }
   }
