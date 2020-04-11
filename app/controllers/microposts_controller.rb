@@ -5,7 +5,7 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
-      render :json => 'success'
+      render :json => 'micropost saved'
       #flash[:success] = 'micropost saved'
       #redirect_to root_url
     else
