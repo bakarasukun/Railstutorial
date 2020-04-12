@@ -1,15 +1,11 @@
 <template>
-  <div :id="`micropost_${item.id}`">
+  <div v-bind:id="`micropost_${item.id}`">
     <li>
-      <a :href="`http://localhost:3000/users/${item.user_id}`">
+      <a v-bind:href="`http://localhost:3000/users/${item.user_id}`">
         <img :src="`${item.avatar}`" class="gravatar" />
       </a>
       <span class="user">
-        <a :href="`http://localhost:3000/users/${item.user_id}`">
-          {{
-          item.name
-          }}
-        </a>
+        <a :href="`http://localhost:3000/users/${item.user_id}`">{{ item.name }}</a>
       </span>
       <span class="content">
         {{ item.content }}
@@ -19,10 +15,7 @@
         Posted {{ item.date }} ago.
         <a
           href="javascript:void(0)"
-          v-on:click="
-            del_confirm(item.id);
-            return false;
-          "
+          v-on:click="del_confirm(item.id);"
           v-if="item.user_id == current_user.id"
         >delete</a>
       </span>
@@ -55,9 +48,7 @@ export default {
     async del_confirm(id) {
       if (confirm('You sure?')) {
         try {
-          const response = await axios.delete(
-            `http://localhost:3000/microposts/${id}`
-          );
+          const response = await axios.delete(`http://localhost:3000/microposts/${id}`);
           alert(response.data.msg);
         } catch (error) {
           alert('request送信失敗');
