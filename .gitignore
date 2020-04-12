@@ -21,6 +21,7 @@
 /yarn-error.log
 
 .byebug_history
+/.prettierrc
 
 /public/packs
 /public/packs-test
