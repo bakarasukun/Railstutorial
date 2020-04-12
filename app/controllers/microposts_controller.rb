@@ -15,10 +15,9 @@ class MicropostsController < ApplicationController
 
   def destroy
     if @micropost.destroy
-      pp "test"
       render 'microposts/success', formats: 'json', handlers: 'jbuilder'
     else
-      render :json => 'failed'
+      render 'microposts/failed', formats: 'json', handlers: 'jbuilder'
     end
     #flash[:success] = 'Micropsot deleted'
     #redirect_to request.referrer || root_url 
