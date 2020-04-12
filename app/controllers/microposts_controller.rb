@@ -9,8 +9,7 @@ class MicropostsController < ApplicationController
       #flash[:success] = 'micropost saved'
       #redirect_to root_url
     else
-      @feed_items = []
-      render 'static_pages/home'
+      render :json => 'failed to save micropost'
     end
   end
 
