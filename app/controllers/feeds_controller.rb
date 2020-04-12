@@ -1,9 +1,5 @@
-class ApiController < ApplicationController
-  def user_api
-    render formats: 'json', handlers: 'jbuilder'
-  end
-
-  def feed_api
+class FeedsController < ApplicationController
+  def index
     if current_user 
       @feed_items = current_user.feed.paginate(page: params[:page]).includes(:user)
     else
